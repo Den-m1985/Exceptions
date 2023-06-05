@@ -15,35 +15,39 @@ public static int sum2d(String[][] arr){
  */
 public class Task2 {
     public static void main(String[] args) {
-        String[][] arr = {{"1", "2", "3", "4", "5"}, {"6", "7", "8", "9", "10"}};
-        sum2d(arr);
+        String[][] arr = {{"d", "2", "3", "4", "5"}, {"6", "7", "8", "9", "10"}};
+        System.out.println(sum2d(arr));
     }
 
 
     public static int sum2d(String[][] arr) {
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i].length);
+            if (arr[i].length != 5) {
+                throw new ArrayIndexOutOfBoundsException("Array length is not 5");
+            }
             for (int j = 0; j < 5; j++) {
-                try {
-                    //digit(arr[i], arr[j]);
-                    String x = arr[i][j];
-                    int val = Integer.parseInt(arr[i][j]);
+                String str = arr[i][j];
+                if (isInteger(str)) {
+                    int val = Integer.parseInt(str);
                     sum += val;
-                } catch (RuntimeException exception){
-                    exception.printStackTrace();
-                    System.out.println(exception.getMessage());
-                }
+                } else
+                    System.out.println();
+                throw new NumberFormatException("Array include not digit");
             }
         }
         return sum;
     }
 
-    public static Integer digit(String a, String b){
-    if (1 == 6){
-        throw new RuntimeException("Массив не квадратный");
-    }
-        return null;
-    }
+    static boolean isInteger(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (Exception ignored) {
+            return false;
+        }
 
 
+    }
 }
