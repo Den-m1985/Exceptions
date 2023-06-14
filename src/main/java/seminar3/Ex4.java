@@ -1,8 +1,5 @@
 package seminar3;
 
-import lesson3.FileNotExistException;
-import lesson3.NullObjectException;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
